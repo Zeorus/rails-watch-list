@@ -1,0 +1,17 @@
+<div class="navbar">
+  <div class="logo-container">
+    <%= link_to lists_path do %>
+      <%= image_tag("film.png") %>
+    <% end %>
+  </div>
+  <div class="navbar-links">
+    <%= link_to "Mes Listes", "#", class: "btn btn-secondary" %>
+    <div class="btn btn-primary" data-toggle="modal" data-target="#list" data-list="<%= @list = List.new %>">
+      Nouvelle Liste
+    </div>
+  </div>
+</div>
+
+<% if @list != nil %>
+  <%= render 'shared/modal_list', list: @list %>
+<% end %>

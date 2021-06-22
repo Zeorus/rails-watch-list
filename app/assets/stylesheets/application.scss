@@ -11,3 +11,28 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "lists/index";
+
+body {
+  background-color: white;
+}
+
+#page-container {
+  width: 90%;
+  margin: 20px auto;
+  min-height: calc(100vh - 520px);
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+
+  &:hover {
+    color: inherit !important;
+  }
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,19 @@
+<div class="modal fade" id="bookmark" tabindex="-1" aria-labelledby="newBookmark" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newBookmark">Ajouter une vidéo à la liste</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <div aria-hidden="true" class="btn-modal-close">&times;</div>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [list, bookmark] do |f| %>
+          <%= f.input :comment, label: "Commentaire", required: true %>
+          <%= f.association :movie, label: "Choisissez la vidéo à ajouter", required: true %>
+          <%= f.submit "Ajouter", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

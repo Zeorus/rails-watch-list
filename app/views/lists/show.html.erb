@@ -1,0 +1,48 @@
+<div id="banner-section" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.2)), url('<%= cl_image_path @list.img.key, height: 300, crop: :fill %>')">
+  <div>
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+<div id="page-container">
+  <div id="show-movie-container">
+    <div class="btn btn-primary" data-toggle="modal" data-target="#bookmark" data-list="<%= @bookmark = Bookmark.new %>">
+      Ajouter une vidéo
+    </div>
+  </div>
+
+  <div class="cards-movie-container">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card-movie card-sortable">
+        <div class="movie-img-container">
+          <%= image_tag(bookmark.movie.poster_url) %>
+        </div>
+        <div class="movie-infos-container">
+          <div class="movie-infos-headers">
+            <h2 class="movie-title"><%= bookmark.movie.title %></h2>
+            <p class="movie-rating"><%= bookmark.movie.rating %></p>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="movie-infos-body">
+            <div class="movie-overview">
+              <p><%= bookmark.movie.overview %></p>
+            </div>
+            <div class="movie-infos-bottom">
+              <div class="movie-comment">
+                <i class="fas fa-comment">
+                </i><p><%= bookmark.comment %></p>
+              </div>
+              <div>
+                <%= link_to bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'bookmarks/modal_bookmark', list: @list, bookmark: @bookmark %>

@@ -7,8 +7,26 @@ import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
-import 'bootstrap';
 
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
+
+// External imports
+import 'bootstrap';
+
+// Internal imports
+import { initSortable } from '../plugins/init_sortable';
+
+
+document.addEventListener('turbolinks:load', () => {
+
+  $(document).ready(function(){
+    $('[data-hover="tooltip"]').tooltip();
+  });
+
+  if (document.getElementById("cards-sortable")) {
+    initSortable();
+  }
+
+});

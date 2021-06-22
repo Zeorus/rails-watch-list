@@ -1,0 +1,17 @@
+<div id="banner-section" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.2)), url('/assets/cover.jpg')">
+  <div>
+    <h1>Mes listes de films</h1>
+  </div>
+</div>
+
+<div id="page-container">
+  <div class="cards-lists-container" id="cards-sortable">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do %>
+        <div class="card-list card-sortable" data-item-id="<%= list.id %>" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.2)), url('<%= cl_image_path list.img.key, height: 300, crop: :fill %>')">
+          <h2><%= list.name %></h2>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
