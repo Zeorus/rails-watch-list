@@ -15,7 +15,6 @@ const initSortable = () => {
     onEnd: (event) => {
       const cardToDelete = event.item;
       if (event.to.id == "trash-delete-items") {
-        console.log('drop in trash')
         cardToDelete.classList.add('card-delete');
         cardToDelete.style.display = 'none';
 
